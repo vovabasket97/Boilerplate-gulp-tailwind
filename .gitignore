@@ -1,0 +1,8 @@
+build
+node_modules
+v3d_app_data
+
+package-lock.json
+
+.blend1
+.DS_Store
