@@ -16,6 +16,10 @@ body {
   overflow-x: hidden;
 }
 
+body > main {
+  @apply min-h-screen w-screen pt-8 pl-6 pb-10 pr-3 z-10 relative;
+}
+
 @media (min-width: 1023px) {
   html,
   body {
