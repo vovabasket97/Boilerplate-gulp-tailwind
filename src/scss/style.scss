@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'libs/*';
 @import 'base/*';
 @import '_local-fonts.scss';
 
 @import 'global/*';
-@import 'libs/*';
 @import '../components/**/*.scss';

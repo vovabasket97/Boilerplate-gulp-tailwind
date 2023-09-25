@@ -1,6 +1,6 @@
 const fs = require('fs');
 const chalk = require('chalk');
-const options = require("../config");
+const options = require('../config');
 
 let srcFonts = 'src/scss/_local-fonts.scss';
 let appFonts = options.paths.build.fonts;
@@ -17,7 +17,7 @@ module.exports = function fonts(done) {
         if (c_fontname != fontname) {
           if (fontExt == 'woff' || fontExt == 'woff2') {
             fs.appendFile(srcFonts, `@include font-face("${fontname}", "${fontname}", 400);\r\n`, () => {});
-            console.log(chalk `
+            console.log(chalk`
 {bold {bgGray Added new font: ${fontname}.}
 ----------------------------------------------------------------------------------
 {bgYellow.black Please, move mixin call from {cyan src/scss/_local-fonts.scss} to {cyan src/scss/global/_fonts.scss} and then change it!}}
@@ -28,6 +28,6 @@ module.exports = function fonts(done) {
         c_fontname = fontname;
       }
     }
-  })
+  });
   done();
-}
+};

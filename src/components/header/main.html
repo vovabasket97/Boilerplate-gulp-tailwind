@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    @@if (context.description) {
+    	<meta name="description" content="@@description" />
+    }
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-	@@if (context.description) {
-		<meta name="description" content="@@description">
-	}
-	@@if (context.favicon) {
-		<link rel="shortcut icon" href="@@favicon" type="image/x-icon">
-	}
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="img/favicons/site.webmanifest" />
+    <link rel="mask-icon" href="img/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
 
-	<link rel="stylesheet" href="css/style.min.css">
-	@@if (context.title) {
-		<title>@@title</title>
-	}
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<body>
+    <link rel="stylesheet" href="css/style.min.css?v=2.0.0" />
+    @@if (context.title) {
+    <title>@@title</title>
+    }
+  </head>
+
+  <body class="max-h-full h-full min-h-full collectionsIsOpen"></body>
+</html>
