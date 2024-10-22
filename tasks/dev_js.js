@@ -12,19 +12,16 @@ const nodeResolve = require("@rollup/plugin-node-resolve");
 
 var cache;
 
-module.exports = function dev_js() {
-  return rollup({
-    input: `${options.paths.src.js}/main.js`,
+const generateFile = async ({
+  filePath = options.paths.src.js,
+  filename,
+  minFileName,
+}) => {
+  return await rollup({
+    input: `${filePath}/${filename}`,
     plugins: [
       babel({
-        presets: [
-          [
-            "@babel/preset-env",
-            {
-              modules: false,
-            },
-          ],
-        ],
+        presets: [["@babel/preset-env", { modules: false }]],
         plugins: ["transform-object-rest-spread"],
         babelrc: false,
         exclude: "node_modules/**",
@@ -41,10 +38,19 @@ module.exports = function dev_js() {
     .on("bundle", function (bundle) {
       cache = bundle;
     })
-    .pipe(source("main.js"))
+    .pipe(source(filename))
     .pipe(buffer())
     .pipe(uglify())
-    .pipe(concat("main.min.js"))
+    .pipe(concat(minFileName))
     .pipe(dest(options.paths.build.js))
     .pipe(bs.stream());
+};
+
+module.exports = async function dev_js() {
+  const main = await generateFile({
+    filename: "main.js",
+    minFileName: "main.min.js",
+  });
+
+  return [main];
 };
